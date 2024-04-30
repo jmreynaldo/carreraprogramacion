@@ -8,16 +8,19 @@
 <body>
 	<div>
 		<label>DNI</label>
-			<input type="number" class="dni" placeholder="Ingrese DNI">
-			<select class="materia">
-				<option value="Matematica">Matematica</option>
-				<option value="Programacion">Programacion</option>
-				<option value="Sistemas">Sistemas</option>
-			</select>
-			<input type="number" class="nota" placeholder="Ingrese su nota">
-			<button class="agregar">Agregar</button>
-			<button class="notas">Ver Notas</button>
-</div>
+		<input type="number" class="dni">
+		<select class="materia">
+			<option value="Matematica">Matematica</option>
+			<option value="Programacion">Programacion</option>
+			<option value="Sistemas">Sistemas</option>
+		</select>
+		<input type="number" class="nota" placeholder="Ingrese su nota">
+		<button class="agregar">Agregar</button>
+	</div>	
+	<div>
+		<button class="verNotas">Ver Notas</button>
+	</div>
+	
 <table border="1">
 		<thead>
 			<tr>
@@ -31,6 +34,17 @@
 		<tbody class="tablaNotas"></tbody>
 	</table>
 
-<script src="alumnos.js" type="text/javascript"></script>
+<script src="C:\UTN-Programa\Prog-JS\alumnos.js" type="text/javascript"></script>
+<style type="text/css">
+	div {
+		padding: 10px;
+	}
+	button {
+			width: 100px;
+			font-size: 12px;
+			cursor: pointer;
+			padding: 7px;
+			border-radius: 5px	;
+		}
 </body>
 </html>
