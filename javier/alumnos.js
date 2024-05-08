@@ -27,7 +27,8 @@ xagregar.addEventListener("click", function(){
 		alert("Por favor ingrese la nota");
 		return false;
 	}
-	alumnos[xdni.value][`${xmateria.value}`].push(parseInt(xnota.value));	
+	alumnos[xdni.value][`${xmateria.value}`].push(parseInt(xnota.value));
+
 })
 
 
@@ -85,7 +86,7 @@ function xPromedio(xN) {
 		Total=Total + xN[i];
 
 	}
-
+	//calculo el promedio
 	Prom = (Total/xN.length).toFixed(2);
 	return Prom
 }
