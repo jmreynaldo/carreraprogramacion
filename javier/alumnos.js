@@ -1,20 +1,27 @@
-var alumnos=[];
-var xdni= document.querySelector(".dni");
-var xmateria= document.querySelector(".materia");
-var xagregar= document.querySelector(".agregar");
-var xnota= document.querySelector(".nota");
-var verNotas= document.querySelector(".verNotas");
-var tbNotas= document.querySelector(".tablaNotas");
+var alumnos = [];
+var xdni = document.querySelector(".dni");
+var xmateria = document.querySelector(".materia");
+var xagregar = document.querySelector(".agregar");
+var xnota = document.querySelector(".nota");
+var verNotas = document.querySelector(".verNotas");
+var tbNotas = document.querySelector(".tablaNotas");
 
 xagregar.addEventListener("click", function(){
 	
-	if (isNaN(xdni.value) || xdni.value==0) {
+	var nuevoDniValor = parseInt(xdni.value);
+
+	if (isNaN(nuevoDniValor) || xdni.value==0) {
 		alert("Por favor ingrese un DNI");
 		return false;
 
 	}
 	
-	if(alumnos[xdni.value]=== undefined){
+	if (xnota.value == 0) {
+		alert("Por favor ingrese la nota");
+		return false;
+	}
+
+	if(alumnos[xdni.value] === undefined){
 		//Agrego el alumno con datos en blanco
 		alumnos[xdni.value] = {
 			"Matematica": [],
@@ -23,23 +30,20 @@ xagregar.addEventListener("click", function(){
 		}
 		
 	}
-	if (xnota.value == 0) {
-		alert("Por favor ingrese la nota");
-		return false;
-	}
-	alumnos[xdni.value][`${xmateria.value}`].push(parseInt(xnota.value));
+	alumnos[xdni.value][xmateria.value].push(parseInt(xnota.value));
 
 })
 
 
 verNotas.addEventListener("click",function(){
-	
-	if (isNaN(xdni.value) || xdni.value==0) {
+	var nuevoDniValor = parseInt(xdni.value);
+
+	if (isNaN(nuevoDniValor) || xdni.value==0) {
 		alert("Por favor ingrese un DNI");
 		return false;
 
 	}
-	if (alumnos[xdni.value]===undefined) {
+	if (alumnos[xdni.value] === undefined) {
 		alert("No existen notas para este DNI");
 		return false;
 
@@ -51,8 +55,8 @@ verNotas.addEventListener("click",function(){
 	let p2 = xPromedio(mMateria2);
 	let p3 = xPromedio(mMateria3);
 
-	tbNotas.innerHTML="";
-	tbNotas.innerHTML+= `
+	tbNotas.innerHTML = "";
+	tbNotas.innerHTML += `
 			<tr>
 				<td>Matematica</td>
 				<td>${mMateria1}</td>
@@ -76,26 +80,25 @@ verNotas.addEventListener("click",function(){
 
 function xPromedio(xN) {
 	var Total = 0;
-	var Prom = 0;
 	
 	if (xN.length <= 0) { 
 		return 0
 	}
 	
 	for (let i=0; i < xN.length; i++) {
-		Total=Total + xN[i];
+		Total = Total + xN[i];
 
 	}
 	//calculo el promedio
-	Prom = (Total/xN.length).toFixed(2);
+	var Prom = (Total/xN.length).toFixed(2);
 	return Prom
 }
 function siAprobo(xp) {
 	if (xp >= 6) {
 		return "Aprobado   "
-	} 
-	if (xp>0 && xp<6) {
+	} else if (xp>0 && xp<6) {
 		return "Desaprobado"
+	} else {
+		return "sin Calif."
 	}
-	return "sin Calif."
 }
